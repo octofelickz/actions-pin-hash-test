@@ -1,0 +1,17 @@
+name: CI
+on:
+  push
+#TODO What permission is need here to attach artifact to workflow run: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defining-access-for-the-github_token-scopes
+permissions: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    steps:
+
+      - name: checkout
+        uses: actions/checkout@v4
+      
+      - name: pester tests
+        uses: zyborg/pester-tests-report@v1.5.0
